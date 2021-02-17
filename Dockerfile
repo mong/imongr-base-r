@@ -7,6 +7,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     sudo=1.9.5* \
     pandoc=2.9.2* \
     pandoc-citeproc=0.17.0* \
+    libcurl3-gnutls=7.74.0* \
     libcurl4-gnutls-dev=7.74.0* \
     libcairo2-dev=1.16.0* \
     libxt-dev=1:1.2.* \
