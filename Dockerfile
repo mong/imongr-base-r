@@ -17,14 +17,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libmariadbclient-dev \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-# basic R functionality
-RUN R -e "install.packages(c('remotes'), repos='https://cloud.r-project.org/')"
-
 # install package dependencies
 RUN R -e "install.packages(c('digest', 'dplyr', 'DT', 'magrittr', 'pool', 'readr', 'rlang', 'RMariaDB', 'yaml'))"
 
-RUN R -e "remotes::install_github('rstudio/shiny')"
-
-RUN R -e "install.packages(c('shinyalert', 'shinycssloaders'))"
+RUN R -e "install.packages(c('shiny', 'shinyalert', 'shinycssloaders'))"
 
 CMD ["R"]
