@@ -1,12 +1,14 @@
-FROM rocker/r-base
+FROM rocker/r-base:4.0.3
 
 LABEL maintainer "Are Edvardsen <are.edvardsen@helse-nord.no>"
 
 # system libraries of general use
-RUN apt-get update && apt-get install -y \
+# hadolint ignore=DL3008
+RUN apt-get update && apt-get install -y --no-install-recommends \
     sudo \
     pandoc \
     pandoc-citeproc \
+    libcurl3-gnutls \
     libcurl4-gnutls-dev \
     libcairo2-dev \
     libxt-dev \
