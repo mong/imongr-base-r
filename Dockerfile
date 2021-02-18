@@ -3,17 +3,18 @@ FROM rocker/r-base:4.0.3
 LABEL maintainer "Are Edvardsen <are.edvardsen@helse-nord.no>"
 
 # system libraries of general use
+# hadolint ignore=DL3008
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    sudo=1.9.5* \
-    pandoc=2.9.2* \
-    pandoc-citeproc=0.17.0* \
-    libcurl3-gnutls=7.74.0* \
-    libcurl4-gnutls-dev=7.74.0* \
-    libcairo2-dev=1.16.0* \
-    libxt-dev=1:1.2.* \
-    libxml2-dev=2.9.10* \
-    libssl-dev=1.1.1i* \
-    libmariadbclient-dev=1:10.5.* \
+    sudo \
+    pandoc \
+    pandoc-citeproc \
+    libcurl3-gnutls \
+    libcurl4-gnutls-dev \
+    libcairo2-dev \
+    libxt-dev \
+    libxml2-dev \
+    libssl-dev \
+    libmariadbclient-dev \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # basic R functionality
