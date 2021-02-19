@@ -18,8 +18,20 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # install package dependencies
-RUN R -e "install.packages(c('digest', 'dplyr', 'DT', 'magrittr', 'pool', 'readr', 'rlang', 'RMariaDB', 'yaml'))"
-
-RUN R -e "install.packages(c('shiny', 'shinyalert', 'shinycssloaders'))"
+RUN R -e "install.packages(c('digest',\
+                             'dplyr',\
+                             'DT',\
+                             'lifecycle',\
+                             'magrittr',\
+                             'pool',\
+                             'readr',\
+                             'rlang',\
+                             'RMariaDB',\
+                             'shiny',\
+                             'shinyjs',\
+                             'shinyalert',\
+                             'shinycssloaders',\
+                             'tibble',\
+                             'yaml'))"
 
 CMD ["R"]
