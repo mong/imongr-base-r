@@ -14,7 +14,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libxt-dev \
     libxml2-dev \
     libssl-dev \
-    libmariadbclient-dev \
+    libmariadb-dev \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # install package dependencies
