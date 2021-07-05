@@ -1,4 +1,4 @@
-FROM rocker/r-base:4.0.3
+FROM rocker/r-base:latest
 
 LABEL maintainer "Are Edvardsen <are.edvardsen@helse-nord.no>"
 
