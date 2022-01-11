@@ -22,7 +22,7 @@ jobs:
           dockerfile: "Dockerfile"
       - name: Prepare tags
         id: docker_meta
-        uses: crazy-max/ghaction-docker-meta@v1
+        uses: crazy-max/ghaction-docker-meta@v3.6.2
         with:
           images: hnskde/imongr-base-r
           tag-match: \d{1,3}.\d{1,3}.\d{1,3}
