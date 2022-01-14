@@ -27,7 +27,7 @@ RUN R -e "install.packages(c('digest',\
                              'readr',\
                              'rlang',\
                              'RMariaDB',\
-                             'rmarkdown, \
+                             'rmarkdown', \
                              'shiny',\
                              'shinyjs',\
                              'shinyalert',\
