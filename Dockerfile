@@ -18,7 +18,17 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     texlive-latex-recommended \
     texlive-latex-extra \
     lmodern \
+    locales \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+# Set norsk bokmaal as default system locale
+RUN sed -i 's/^# *\(nb_NO.UTF-8\)/\1/' /etc/locale.gen \
+    && locale-gen \
+    && echo "LANG=\"nb_NO.UTF-8\"" > /etc/default/locale \
+    && update-locale LANG=nb_NO.utf8
+
+ENV LC_ALL=nb_NO.UTF-8
+ENV LANG=nb_NO.UTF-8
 
 # install package dependencies
 RUN R -e "install.packages(c('digest',\
