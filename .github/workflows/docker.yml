@@ -22,7 +22,7 @@ jobs:
           dockerfile: "Dockerfile"
       - name: Prepare
         id: docker_meta
-        uses: docker/metadata-action@v3.6.2
+        uses: docker/metadata-action@v4.1.0
         with:
           images: hnskde/imongr-base-r
           tags: |
