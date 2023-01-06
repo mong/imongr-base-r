@@ -7,7 +7,6 @@ LABEL maintainer "Are Edvardsen <are.edvardsen@helse-nord.no>"
 RUN apt-get update && apt-get install -y --no-install-recommends \
     sudo \
     pandoc \
-    pandoc-citeproc \
     libcurl3-gnutls \
     libcurl4-gnutls-dev \
     libcairo2-dev \
