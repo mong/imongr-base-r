@@ -1,50 +1,28 @@
-FROM rocker/r-ver:4.2.3
+FROM rhub/r-minimal:4.2.3
 
-LABEL maintainer "Are Edvardsen <are.edvardsen@helse-nord.no>"
+LABEL maintainer "Arnfinn Hykkerud Steindal <arnfinn.hykkerud.steindal@helse-nord.no>"
 
-# system libraries of general use
-# hadolint ignore=DL3008
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    sudo \
-    pandoc \
-    libcurl3-gnutls \
-    libcurl4-gnutls-dev \
-    libcairo2-dev \
-    libxt-dev \
-    libxml2-dev \
-    libssl-dev \
-    libmariadb-dev \
-    texlive-latex-recommended \
-    texlive-latex-extra \
-    lmodern \
-    locales \
-    && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
-# Set norsk bokmaal as default system locale
-RUN sed -i 's/^# *\(nb_NO.UTF-8\)/\1/' /etc/locale.gen \
-    && locale-gen \
-    && echo "LANG=\"nb_NO.UTF-8\"" > /etc/default/locale \
-    && update-locale LANG=nb_NO.utf8
+# system libraries
+RUN apk add --no-cache --update-cache \
+        --repository http://nl.alpinelinux.org/alpine/v3.11/main \
+        autoconf=2.69-r2 \
+        automake=1.16.1-r0
 
 ENV LC_ALL=nb_NO.UTF-8
 ENV LANG=nb_NO.UTF-8
 
+RUN apk add --no-cache mariadb-dev mariadb-connector-c-dev perl
+
 # install package dependencies
-RUN R -e "install.packages(c('digest',\
-                             'dplyr',\
-                             'DT',\
-                             'lifecycle',\
-                             'magrittr',\
-                             'pool',\
-                             'readr',\
-                             'rlang',\
-                             'RMariaDB',\
-                             'rmarkdown', \
-                             'shiny',\
-                             'shinyjs',\
-                             'shinyalert',\
-                             'shinycssloaders',\
-                             'tibble',\
-                             'yaml'))"
+RUN installr -d \
+        -t "libsodium-dev curl-dev linux-headers autoconf automake" \
+        -a libsodium \
+        digest dplyr DT lifecycle magrittr pool readr rlang RMariaDB rmarkdown shiny shinyjs shinyalert shinycssloaders tibble yaml && \
+        wget https://github.com/jgm/pandoc/releases/download/2.13/pandoc-2.13-linux-amd64.tar.gz && \
+        tar xzf pandoc-2.13-linux-amd64.tar.gz && \
+        mv pandoc-2.13/bin/* /usr/local/bin/ && \
+        rm -rf pandoc-2.13*
+
+RUN installr -d tinytex && R -e "tinytex::install_tinytex()"
 
 CMD ["R"]
