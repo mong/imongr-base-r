@@ -11,7 +11,7 @@ RUN apk add --no-cache --update-cache \
 ENV LC_ALL=nb_NO.UTF-8
 ENV LANG=nb_NO.UTF-8
 
-RUN apk add --no-cache mariadb-dev mariadb-connector-c-dev perl
+RUN apk add --no-cache mariadb-dev mariadb-connector-c-dev perl cairo-dev
 
 # install package dependencies
 RUN installr -d \
@@ -23,6 +23,6 @@ RUN installr -d \
         mv pandoc-2.13/bin/* /usr/local/bin/ && \
         rm -rf pandoc-2.13*
 
-RUN installr -d tinytex && R -e "tinytex::install_tinytex()"
+RUN installr -d tinytex && R -e "tinytex::install_tinytex(TRUE)" && R -e "tinytex::tinytex_root()"
 
 CMD ["R"]
