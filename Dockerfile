@@ -38,13 +38,14 @@ RUN R -e "install.packages(c('digest',\
                              'pool',\
                              'readr',\
                              'rlang',\
-                             'RMariaDB',\
+                             'remotes',\
                              'rmarkdown', \
                              'shiny',\
                              'shinyjs',\
                              'shinyalert',\
                              'shinycssloaders',\
                              'tibble',\
-                             'yaml'))"
+                             'yaml'))" && \
+                             R -e "remotes::install_github('r-dbi/RMariaDB@*release')"
 
 CMD ["R"]
