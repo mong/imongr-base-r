@@ -13,7 +13,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libxt-dev \
     libxml2-dev \
     libssl-dev \
-    libmariadb-dev \
+    libmysqlclient-dev \
     texlive-latex-recommended \
     texlive-latex-extra \
     lmodern \
@@ -45,7 +45,6 @@ RUN R -e "install.packages(c('digest',\
                              'shinyalert',\
                              'shinycssloaders',\
                              'tibble',\
-                             'yaml'))" && \
-                             R -e "install.packages('RMariaDB', repos='https://cloud.r-project.org/')"
+                             'yaml'))"
 
 CMD ["R"]
