@@ -38,7 +38,7 @@ RUN R -e "install.packages(c('digest',\
                              'pool',\
                              'readr',\
                              'rlang',\
-                             'remotes',\
+                             'RMariaDB',\
                              'rmarkdown', \
                              'shiny',\
                              'shinyjs',\
@@ -46,6 +46,6 @@ RUN R -e "install.packages(c('digest',\
                              'shinycssloaders',\
                              'tibble',\
                              'yaml'))" && \
-                             R -e "remotes::install_github('r-dbi/RMariaDB@*release')"
+                             R -e "install.packages('RMariaDB', repos='https://cloud.r-project.org/')"
 
 CMD ["R"]
