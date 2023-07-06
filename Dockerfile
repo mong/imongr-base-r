@@ -45,6 +45,7 @@ RUN R -e "install.packages(c('digest',\
                              'shinyalert',\
                              'shinycssloaders',\
                              'tibble',\
-                             'yaml'))"
+                             'yaml'))" && \
+                             R -e "install.packages('RMariaDB', repos='https://cloud.r-project.org/')"
 
 CMD ["R"]
