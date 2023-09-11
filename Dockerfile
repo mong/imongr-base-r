@@ -1,6 +1,6 @@
 FROM rocker/r-ver:4.3.1
 
-LABEL maintainer "Are Edvardsen <are.edvardsen@helse-nord.no>"
+LABEL maintainer "Arnfinn Hykkerud Steindal <arnfinn.hykkerud.steindal@helse-nord.no>"
 
 # system libraries of general use
 # hadolint ignore=DL3008
