@@ -6,7 +6,6 @@ LABEL maintainer "Arnfinn Hykkerud Steindal <arnfinn.hykkerud.steindal@helse-nor
 # hadolint ignore=DL3008
 RUN apt-get update && apt-get install -y --no-install-recommends \
     sudo \
-    pandoc \
     libcurl3-gnutls \
     libcurl4-gnutls-dev \
     libcairo2-dev \
@@ -14,8 +13,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libxml2-dev \
     libssl-dev \
     libmysqlclient-dev \
-    texlive-latex-recommended \
-    texlive-latex-extra \
     lmodern \
     locales \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
@@ -39,7 +36,7 @@ RUN R -e "install.packages(c('digest',\
                              'readr',\
                              'rlang',\
                              'RMariaDB',\
-                             'rmarkdown', \
+                             'markdown', \
                              'shiny',\
                              'shinyjs',\
                              'shinyalert',\
