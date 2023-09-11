@@ -33,6 +33,11 @@ RUN installr -d \
            yaml
 
 RUN apk add --no-cache --update-cache \
-        mariadb-dev mariadb-connector-c-dev perl cairo-dev
+        mariadb-dev mariadb-connector-c-dev perl cairo-dev \
+        tzdata \
+        && export TZDIR=/usr/share/zoneinfo
+
+ENV LC_ALL=nb_NO.UTF-8
+ENV LANG=nb_NO.UTF-8
 
 CMD ["R"]
