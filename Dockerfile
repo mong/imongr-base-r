@@ -50,7 +50,7 @@ RUN R -e "install.packages(c('digest',\
                              'yaml'))"
 
 # Install AWSCLI
-RUN pip install --upgrade pip && \
-    pip install --upgrade awscli
+RUN pip install --no-cache-dir --upgrade pip==23.2.1 && \
+    pip install --no-cache-dir --upgrade awscli==1.29.47
 
 CMD ["R"]
