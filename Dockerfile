@@ -33,7 +33,6 @@ ENV LANG=nb_NO.UTF-8
 RUN R -e "install.packages(c('digest',\
                              'dplyr',\
                              'DT',\
-                             'lifecycle',\
                              'magrittr',\
                              'pool',\
                              'readr',\
