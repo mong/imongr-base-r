@@ -44,6 +44,6 @@ RUN R -e "install.packages(c('digest',\
                              'shinyalert',\
                              'shinycssloaders',\
                              'tibble',\
-                             'yaml'))"
+                             'yaml'), repos = c(CRAN = 'https://packagemanager.posit.co/cran/__linux__/jammy/latest'))"
 
 CMD ["R"]
