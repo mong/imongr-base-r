@@ -1,4 +1,4 @@
-FROM rocker/r-ver:4.3.1
+FROM rocker/r-ver:4.3.2
 
 LABEL maintainer "Arnfinn Hykkerud Steindal <arnfinn.hykkerud.steindal@helse-nord.no>"
 
@@ -18,8 +18,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     texlive-latex-extra \
     lmodern \
     locales \
-    python3 \
-    python3-pip \
+    curl \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Set norsk bokmaal as default system locale
@@ -28,6 +27,11 @@ RUN sed -i 's/^# *\(nb_NO.UTF-8\)/\1/' /etc/locale.gen \
     && echo "LANG=\"nb_NO.UTF-8\"" > /etc/default/locale \
     && update-locale LANG=nb_NO.utf8
 
+RUN arch=`uname -m` && curl "https://awscli.amazonaws.com/awscli-exe-linux-${arch}.zip" -o "awscli.zip" \
+&& unzip awscli.zip \
+&& ./aws/install \
+&& rm -rf awscli.zip
+
 ENV LC_ALL=nb_NO.UTF-8
 ENV LANG=nb_NO.UTF-8
 
@@ -35,7 +39,6 @@ ENV LANG=nb_NO.UTF-8
 RUN R -e "install.packages(c('digest',\
                              'dplyr',\
                              'DT',\
-                             'lifecycle',\
                              'magrittr',\
                              'pool',\
                              'readr',\
@@ -48,9 +51,5 @@ RUN R -e "install.packages(c('digest',\
                              'shinycssloaders',\
                              'tibble',\
                              'yaml'))"
-
-# Install AWSCLI
-RUN pip install --no-cache-dir --upgrade pip==23.2.1 && \
-    pip install --no-cache-dir --upgrade awscli==1.29.47
 
 CMD ["R"]
