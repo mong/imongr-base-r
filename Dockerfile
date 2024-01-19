@@ -27,7 +27,8 @@ RUN sed -i 's/^# *\(nb_NO.UTF-8\)/\1/' /etc/locale.gen \
     && echo "LANG=\"nb_NO.UTF-8\"" > /etc/default/locale \
     && update-locale LANG=nb_NO.utf8
 
-RUN arch=`uname -m` && curl "https://awscli.amazonaws.com/awscli-exe-linux-${arch}.zip" -o "awscli.zip" \
+# Install aws-cli
+RUN arch=$(uname -m) && curl "https://awscli.amazonaws.com/awscli-exe-linux-${arch}.zip" -o "awscli.zip" \
 && unzip awscli.zip \
 && ./aws/install \
 && rm -rf awscli.zip
