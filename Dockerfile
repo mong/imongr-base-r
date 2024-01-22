@@ -3,6 +3,7 @@ FROM rhub/r-minimal:4.2.3
 LABEL maintainer "Arnfinn Hykkerud Steindal <arnfinn.steindal@gmail.com>"
 
 # system libraries of general use
+# hadolint ignore=DL3018
 RUN apk add --no-cache --update-cache \
         --repository http://nl.alpinelinux.org/alpine/v3.11/main \
         autoconf=2.69-r2 \
@@ -32,6 +33,7 @@ RUN installr -d \
            tibble \
            yaml
 
+# hadolint ignore=DL3018
 RUN apk add --no-cache --update-cache \
         mariadb-dev mariadb-connector-c-dev perl cairo-dev \
         tzdata \
