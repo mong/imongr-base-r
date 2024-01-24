@@ -5,14 +5,7 @@ LABEL maintainer "Arnfinn Hykkerud Steindal <arnfinn.hykkerud.steindal@helse-nor
 # system libraries of general use
 # hadolint ignore=DL3008
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    sudo \
     pandoc \
-    libcurl3-gnutls \
-    libcurl4-gnutls-dev \
-    libcairo2-dev \
-    libxt-dev \
-    libxml2-dev \
-    libssl-dev \
     libmysqlclient-dev \
     texlive-latex-recommended \
     lmodern \
