@@ -15,7 +15,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libssl-dev \
     libmysqlclient-dev \
     texlive-latex-recommended \
-    texlive-latex-extra \
     lmodern \
     locales \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
