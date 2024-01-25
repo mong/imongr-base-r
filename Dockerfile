@@ -1,8 +1,7 @@
 FROM rhub/r-minimal:4.2.3
 
-LABEL maintainer "Arnfinn Hykkerud Steindal <arnfinn.steindal@gmail.com>"
+LABEL maintainer "Arnfinn Hykkerud Steindal <arnfinn.hykkerud.steindal@helse-nord.no>"
 
-# system libraries of general use
 # hadolint ignore=DL3018
 RUN apk add --no-cache --update-cache \
         --repository http://nl.alpinelinux.org/alpine/v3.11/main \
@@ -38,8 +37,5 @@ RUN apk add --no-cache --update-cache \
         mariadb-dev mariadb-connector-c-dev perl cairo-dev \
         tzdata \
         && export TZDIR=/usr/share/zoneinfo
-
-ENV LC_ALL=nb_NO.UTF-8
-ENV LANG=nb_NO.UTF-8
 
 CMD ["R"]
