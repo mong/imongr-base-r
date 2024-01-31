@@ -19,7 +19,6 @@ RUN installr -d \
            digest \
            dplyr \
            DT \
-           lifecycle \
            magrittr \
            pool \
            readr \
