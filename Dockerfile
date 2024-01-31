@@ -1,4 +1,4 @@
-FROM rocker/r-ver:4.3.1
+FROM rocker/r-ver:4.3.2
 
 LABEL maintainer "Arnfinn Hykkerud Steindal <arnfinn.hykkerud.steindal@helse-nord.no>"
 
@@ -23,7 +23,6 @@ ENV LANG=nb_NO.UTF-8
 RUN R -e "install.packages(c('digest',\
                              'dplyr',\
                              'DT',\
-                             'lifecycle',\
                              'magrittr',\
                              'pool',\
                              'readr',\
