@@ -36,12 +36,10 @@ RUN installr -d \
 RUN apk add --no-cache --update-cache \
         mariadb-dev mariadb-connector-c-dev perl cairo-dev \
         tzdata \
-        && export TZDIR=/usr/share/zoneinfo
-
-
-RUN wget https://github.com/jgm/pandoc/releases/download/2.13/pandoc-2.13-linux-amd64.tar.gz && \
-    tar xzf pandoc-2.13-linux-amd64.tar.gz && \
-    mv pandoc-2.13/bin/* /usr/local/bin/ && \
-    rm -rf pandoc-2.13*
+        && export TZDIR=/usr/share/zoneinfo \
+        && wget -q https://github.com/jgm/pandoc/releases/download/2.13/pandoc-2.13-linux-amd64.tar.gz \
+        && tar xzf pandoc-2.13-linux-amd64.tar.gz \
+        && mv pandoc-2.13/bin/* /usr/local/bin/ \
+        && rm -rf pandoc-2.13*
 
 CMD ["R"]
