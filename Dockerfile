@@ -5,8 +5,6 @@ LABEL maintainer "Arnfinn Hykkerud Steindal <arnfinn.hykkerud.steindal@helse-nor
 # hadolint ignore=DL3018
 RUN apk add --no-cache --update-cache \
         --repository http://nl.alpinelinux.org/alpine/v3.11/main \
-        autoconf=2.69-r2 \
-        automake=1.16.1-r0 \
         mariadb-connector-c-dev \
         perl
 
