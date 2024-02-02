@@ -4,8 +4,7 @@ LABEL maintainer "Arnfinn Hykkerud Steindal <arnfinn.hykkerud.steindal@helse-nor
 
 # hadolint ignore=DL3018
 RUN apk add --no-cache --update-cache \
-        mariadb-connector-c-dev \
-        perl
+        mariadb-connector-c-dev
 
 ENV LC_ALL=nb_NO.UTF-8
 ENV LANG=nb_NO.UTF-8
