@@ -4,7 +4,6 @@ LABEL maintainer "Arnfinn Hykkerud Steindal <arnfinn.hykkerud.steindal@helse-nor
 
 # hadolint ignore=DL3018
 RUN apk add --no-cache --update-cache \
-        --repository http://nl.alpinelinux.org/alpine/v3.11/main \
         mariadb-connector-c-dev \
         perl
 
@@ -12,8 +11,6 @@ ENV LC_ALL=nb_NO.UTF-8
 ENV LANG=nb_NO.UTF-8
 
 RUN installr -d \
-        -t "libsodium-dev mariadb-dev curl-dev linux-headers autoconf automake" \
-        -a libsodium \
            digest \
            dplyr \
            DT \
