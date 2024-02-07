@@ -9,6 +9,8 @@ RUN apk add --no-cache --update-cache \
 ENV LC_ALL=nb_NO.UTF-8
 ENV LANG=nb_NO.UTF-8
 
+ARG TARGETARCH
+
 RUN installr -d \
            digest \
            dplyr \
@@ -25,8 +27,8 @@ RUN installr -d \
            shinycssloaders \
            tibble \
            yaml \
-  && wget -q https://github.com/jgm/pandoc/releases/download/2.19.2/pandoc-2.19.2-linux-amd64.tar.gz \
-  && tar xzf pandoc-2.19.2-linux-amd64.tar.gz \
+  && wget -q https://github.com/jgm/pandoc/releases/download/2.19.2/pandoc-2.19.2-linux-${TARGETARCH}.tar.gz \
+  && tar xzf pandoc-2.19.2-linux-${TARGETARCH}.tar.gz \
   && mv pandoc-2.19.2/bin/* /usr/local/bin/ \
   && rm -rf pandoc-2.19.2*
 
