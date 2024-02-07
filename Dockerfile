@@ -1,4 +1,4 @@
-FROM rhub/r-minimal:4.3.2
+FROM rhub/r-minimal:4.4.0
 
 LABEL maintainer "Arnfinn Hykkerud Steindal <arnfinn.hykkerud.steindal@helse-nord.no>"
 
