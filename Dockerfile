@@ -9,6 +9,8 @@ RUN apk add --no-cache --update-cache \
 ENV LC_ALL=nb_NO.UTF-8
 ENV LANG=nb_NO.UTF-8
 
+ARG TARGETARCH
+
 RUN installr -d \
            digest \
            dplyr \
