@@ -31,6 +31,7 @@ RUN installr -d \
            yaml \
            Cairo \
            ggplot2 \
+           shinyvalidate \
   && wget -q https://github.com/jgm/pandoc/releases/download/2.19.2/pandoc-2.19.2-linux-${TARGETARCH}.tar.gz \
   && tar xzf pandoc-2.19.2-linux-${TARGETARCH}.tar.gz \
   && mv pandoc-2.19.2/bin/* /usr/local/bin/ \
