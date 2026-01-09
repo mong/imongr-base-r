@@ -1,6 +1,6 @@
 FROM rhub/r-minimal:4.5.0
 
-LABEL maintainer "Arnfinn Hykkerud Steindal <arnfinn.hykkerud.steindal@helse-nord.no>"
+LABEL maintainer="Arnfinn Hykkerud Steindal <arnfinn.hykkerud.steindal@helse-nord.no>"
 
 # hadolint ignore=DL3018
 RUN apk add --no-cache --update-cache \
