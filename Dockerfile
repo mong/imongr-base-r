@@ -8,6 +8,7 @@ RUN apk add --no-cache --update-cache \
 
 ENV LC_ALL=nb_NO.UTF-8
 ENV LANG=nb_NO.UTF-8
+ENV R_COMPILE_AND_INSTALL_PACKAGES=always
 
 ARG TARGETARCH
 
