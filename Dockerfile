@@ -11,6 +11,7 @@ ENV LANG=nb_NO.UTF-8
 
 ARG TARGETARCH
 
+# hadolint ignore=DL3018,DL3013
 RUN installr -d \
     -t "cairo-dev gfortran" \
     -a "cairo font-liberation" \
