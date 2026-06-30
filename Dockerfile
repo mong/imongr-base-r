@@ -34,6 +34,7 @@ RUN installr -d \
            tibble \
            yaml \
            Cairo \
-           ggplot2
+           ggplot2 \
+           shinyvalidate
 
 CMD ["R"]
