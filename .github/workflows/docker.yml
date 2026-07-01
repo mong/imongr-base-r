@@ -17,7 +17,16 @@ permissions:
   contents: read
 
 jobs:
+  lint:
+    name: Lint Dockerfile
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: hadolint/hadolint-action@v3.3.0
+        with:
+          dockerfile: Dockerfile
   build:
+    name: Push Docker image to docker hub
     uses: docker/github-builder/.github/workflows/build.yml@v1
     permissions:
       contents: read # to fetch the repository content
@@ -26,11 +35,14 @@ jobs:
       output: image
       push: ${{ github.event_name != 'pull_request' }}
       platforms: linux/amd64,linux/arm64
-      meta-images: name/app
+      context: .
+      cache: true
+      meta-images: hnskde/imongr-base-r
       meta-tags: |
         type=ref,event=branch
         type=ref,event=pr
         type=semver,pattern={{version}}
+        type=semver,pattern={{major}}.{{minor}}
     secrets:
       registry-auths: |
         - registry: docker.io
