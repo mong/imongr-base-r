@@ -1,6 +1,10 @@
+FROM pandoc/minimal:3.10.0 AS pandoc-source
+
 FROM rhub/r-minimal:4.6.0
 
 LABEL maintainer="Arnfinn Hykkerud Steindal <arnfinn.hykkerud.steindal@helse-nord.no>"
+
+COPY --from=pandoc-source /usr/local/bin/pandoc /usr/local/bin/pandoc
 
 # hadolint ignore=DL3018
 RUN apk add --no-cache --update-cache \
@@ -37,10 +41,6 @@ RUN installr -d \
   && apk add --no-cache --update --virtual=build gcc musl-dev python3-dev \
     libffi-dev openssl-dev cargo make \
   && pip3 install --no-cache-dir --prefer-binary --break-system-packages azure-cli \
-  && apk del build \
-  && wget -q https://github.com/jgm/pandoc/releases/download/2.19.2/pandoc-2.19.2-linux-${TARGETARCH}.tar.gz \
-  && tar xzf pandoc-2.19.2-linux-${TARGETARCH}.tar.gz \
-  && mv pandoc-2.19.2/bin/* /usr/local/bin/ \
-  && rm -rf pandoc-2.19.2*
+  && apk del build
 
 CMD ["R"]
