@@ -28,6 +28,7 @@ RUN installr -d \
            shinyjs \
            shinyalert \
            shinycssloaders \
+           sortable \
            tibble \
            yaml \
            Cairo \
