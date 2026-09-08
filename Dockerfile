@@ -1,4 +1,4 @@
-FROM pandoc/minimal:3.10.0 AS pandoc-source
+FROM pandoc/minimal:3.11.0 AS pandoc-source
 
 FROM rhub/r-minimal:4.6.1
 
